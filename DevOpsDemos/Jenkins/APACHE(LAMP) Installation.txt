@@ -1,0 +1,165 @@
+#######APACHE Installation#############
+
+######LAMP stack Installation############
+
+#How to Install LAMP on Linux (Apache, PHP, MySQL)
+
+yum install httpd
+
+chkconfig --levels 3 httpd on
+
+#Note: Forwarding request to 'systemctl enable httpd.service'.
+#Created symlink from /etc/systemd/system/multi-user.target.wants/httpd.service to /usr/lib/systemd/system/httpd.service.
+
+
+vi /etc/httpd/conf/httpd.conf
+
+
+systemctl start httpd
+
+systemctl status httpd
+
+[root@ip-172-31-9-248 conf]# netstat -tulpn
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      4070/sshd
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      4030/master
+tcp6       0      0 :::80                   :::*                    LISTEN      4495/httpd
+tcp6       0      0 :::22                   :::*                    LISTEN      4070/sshd
+tcp6       0      0 ::1:25                  :::*                    LISTEN      4030/master
+udp        0      0 0.0.0.0:68              0.0.0.0:*                           3536/dhclient
+udp        0      0 127.0.0.1:323           0.0.0.0:*                           3437/chronyd
+udp6       0      0 ::1:323                 :::*                                3437/chronyd
+
+cd /var/www/html
+
+vi index.html
+
+<html>
+
+<center> Hello WOrld - from Apache HTTPD server </center>
+</html>
+
+
+#Open port 80 in Security
+
+
+##########MYSQL############
+yum install mysql
+
+Step 1: Download Mysql with this link to your destination folder.
+
+# wget http://dev.mysql.com/get/mysql57-community-release-el7-7.noarch.rpm
+
+
+Step 2: Execute the rpm in your server with command.
+
+# rpm -ivh mysql57-community-release-el7-7.noarch.rpm
+
+Step 3: Install MySQL with.
+
+# yum install mysql-community-server
+
+chkconfig --levels 3 mysqld on
+
+service mysqld start
+
+
+#Securing the MySQL server deployment.
+
+grep 'temporary password' /var/log/mysqld.log
+
+#2019-03-17T13:34:11.884549Z 1 [Note] A temporary password is generated for root@localhost: ?=gihlf:n7nE
+
+
+mysql_secure_installation
+
+Root@123
+
+New password:
+
+Re-enter new password:
+The 'validate_password' plugin is installed on the server.
+The subsequent steps will run with the existing configuration
+of the plugin.
+Using existing password for root.
+
+Estimated strength of the password: 100
+Change the password for root ? ((Press y|Y for Yes, any other key for No) : y
+
+New password:
+
+Re-enter new password:
+
+Estimated strength of the password: 100
+Do you wish to continue with the password provided?(Press y|Y for Yes, any other key for No) : y
+By default, a MySQL installation has an anonymous user,
+allowing anyone to log into MySQL without having to have
+a user account created for them. This is intended only for
+testing, and to make the installation go a bit smoother.
+You should remove them before moving into a production
+environment.
+
+Remove anonymous users? (Press y|Y for Yes, any other key for No) : y
+Success.
+
+
+Normally, root should only be allowed to connect from
+'localhost'. This ensures that someone cannot guess at
+the root password from the network.
+
+Disallow root login remotely? (Press y|Y for Yes, any other key for No) : y
+Success.
+
+By default, MySQL comes with a database named 'test' that
+anyone can access. This is also intended only for testing,
+and should be removed before moving into a production
+environment.
+
+
+Remove test database and access to it? (Press y|Y for Yes, any other key for No) : y
+ - Dropping test database...
+Success.
+
+ - Removing privileges on test database...
+Success.
+
+Reloading the privilege tables will ensure that all changes
+made so far will take effect immediately.
+
+Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
+Success.
+
+All done!
+[root@ip-172-31-9-248 opt]#
+
+
+##########Install PHP
+
+yum install -y php
+
+#Restart HTTPD service
+
+service httpd restart
+
+cd /var/www/html/
+
+vi info.php .php
+<?php
+phpinfo();
+?>
+
+#Execute 
+http://13.232.20.8/info.php
+
+
+#Install Extra packages:
+
+yum install -y php-mysql php-gd php-mbstring php-odbc php-pear php-xml php-xmlrpc
+
+#Installed:
+  php-gd.x86_64 0:5.4.16-46.el7   php-mysql.x86_64 0:5.4.16-46.el7  php-odbc.x86_64 0:5.4.16-46.el7
+  php-pear.noarch 1:1.9.4-21.el7  php-xml.x86_64 0:5.4.16-46.el7    php-xmlrpc.x86_64 0:5.4.16-46.el7
+
+
+

@@ -1,0 +1,178 @@
+##Programming
+
+There are 4 Collection data types in Python
+
+List  |  Tuple  |  Set  |  Dictionary
+
+List      []       ordered | indexed | changeable | duplicates
+Tuple    ()       ordered | indexed | unchangeable | duplicates
+Set       {}       unordered | unindexed | no duplicates
+Dictionary  {K:V}          unordered | changeable | indexed | no duplicates
+
+
+####CODE - List
+
+my_list = ["Tokyo", "London", "New York"]
+print(my_list)
+print(my_list[2])
+
+my_list[2] = "New Delhi"
+print(my_list)
+
+for val in my_list:
+    print(val)
+
+print(len(my_list))
+
+my_list.append("Boston")
+print(my_list)
+my_list.insert(4,"Durham")
+print(my_list)
+
+my_list.remove("Tokyo")
+print(my_list)
+my_list.pop(1)
+print(my_list)
+
+del my_list[1]
+print(my_list)
+
+my_list.clear()
+print(my_list)
+
+fruits = ["apples", "oranges", "cherry"]
+print(fruits)
+fruits.reverse()
+print(fruits)
+
+my_list_2 = ["apples", 1,2,3.0]
+my_list_3 = ["apples", [1,2,3], ['a','b','c']]
+print(my_list_3[1][1])
+
+
+
+####Code - Tuple
+
+my_tuple = ("Apples", "Oranges", "Grapes")
+
+print(my_tuple)
+print(my_tuple[1])
+print(my_tuple[-1])
+print(my_tuple[0:2])
+
+for val in my_tuple:
+    print(val)
+
+# my_tuple[3] = "Cherry"
+# del my_tuple
+
+print(len(my_tuple))
+
+my_tuple_2 = ("Banana",(1,2,3),["Tokyo","New Delhi"])
+print(my_tuple_2)
+print(my_tuple_2[2][1])
+
+my_tuple_2[2][1] = "New York"
+print(my_tuple_2)
+
+print("Banana" in my_tuple_2)   # True
+print("Cherry" in my_tuple_2)   # False
+
+
+
+
+####Code - Sets
+
+
+my_set = {"Chalk", "Duster", "Board"}
+print(my_set)
+
+for x in my_set:
+    print(x)
+
+print("Chalk" in my_set)
+
+my_set.add("Pen")
+print(my_set)
+my_set.update(["Pencil", "Eraser"])
+print(my_set)
+
+len(my_set)
+
+my_set.remove("Pencil")
+print(my_set)
+my_set.discard("Pen")
+print(my_set)
+# my_set.remove("Pencil")
+my_set.discard("Pen")
+
+my_set.pop()
+my_set.clear()
+print(my_set)
+
+del my_set
+
+my_set_2  = {"Apples", 1,2, (3,4,5)}
+print(my_set_2)
+
+my_list = [1,2,3]
+print(my_list)
+my_set_3 = set(my_list)
+print(my_set_3)
+
+# UNION | INTERSECTION | DIFF | SYMMETRIC DIFF
+A = {'A', 'B', 1, 2, 3}
+B = {'B', 'C', 3, 4, 5}
+
+print(A.union(B))
+print(A | B)
+
+print(A.intersection(B))
+print(A & B)
+
+print(A.difference(B))
+print(A - B)
+
+print(A.symmetric_difference(B))
+print(A ^ B)
+
+
+
+
+########Code - Dictionary
+
+my_dict = {
+    "class" :   "animal",
+    "name"  :   "giraffe",
+    "age"   :   10
+}
+
+print(my_dict)
+print(my_dict["name"])
+print(my_dict.get("name"))
+print(my_dict.values())
+
+for x in my_dict:
+    print(my_dict[x])
+
+for x,y in my_dict.items():
+    print(x, y)
+
+my_dict["name"] = "elephant"
+print(my_dict)
+
+my_dict["color"] = "grey"
+print(my_dict)
+
+my_dict.pop("color")
+print(my_dict)
+my_dict.popitem()
+print(my_dict)
+
+del my_dict["class"]
+print(my_dict)
+
+my_dict.clear()
+print(my_dict)
+
+del my_dict

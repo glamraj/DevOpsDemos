@@ -1,0 +1,63 @@
+###INSTALL GO#####################
+cd /opt
+mkdir go-server
+
+wget https://dl.google.com/go/go1.12.1.linux-amd64.tar.gz
+
+tar -C /usr/local -xzf go1.12.1.linux-amd64.tar.gz
+
+export PATH=$PATH:/usr/local/go/bin
+
+docker run -it --rm busybox
+
+vi server.go
+---------------
+package main
+
+import (
+	"fmt"
+	"net/http"
+)
+
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello %s!", r.URL.Path[1:])
+}
+
+func main() {
+	http.HandleFunc("/", handler)
+	fmt.Println("Server running...")
+	http.ListenAndServe(":9090", nil)
+}
+
+---------------
+
+go run server.go
+
+#going to localhost:9090/world on your browser.
+
+
+GOOS=linux GOARCH=386 go build ./server.go
+
+#This will give you an executable file called server
+
+vi Dockerfile
+----------
+FROM busybox
+COPY ./server /home/
+CMD /home/server
+----------
+
+docker build -t go-server .
+
+[root@ip-172-31-9-245 go-server]# docker images
+REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+go-server               latest              dc278cad753f        12 seconds ago      7.67 MB
+
+docker run -p 9090:9090 --rm -it go-server
+
+docker tag go-server dockerglam/go-server:latest
+
+docker login
+
+docker push dockerglam/go-server:latest
+

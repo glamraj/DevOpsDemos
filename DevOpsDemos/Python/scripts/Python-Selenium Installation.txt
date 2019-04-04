@@ -1,0 +1,50 @@
+##Python/Selenium Setup
+
+Selenium Python Beginner Tutorial :
+Learn Selenium Python in ONE VIDEO | Step by Step
+==========================================
+
+Today we will learn:
+-------------------------------
+1.  How to download python on windows
+2.  How to install python
+3.  How to install selenium python libraries
+4.  Download IDE - PyCharm
+5.  Create new project
+6.  Add selenium scripts
+7.  Run and Validate
+
+Step 1 : download python - https://www.python.org/downloads/
+
+Step 2 : Install and check python and pip is installed successfully
+              python --version
+              pip --version
+ 
+Step 3 : install selenium libraries
+              pip install -U selenium
+
+
+Step 4 : Download PyCharm - community edition
+      https://www.jetbrains.com/pycharm/dow...
+
+Step 5 : Create new project in PyCharm
+###ISSUE:  from selenium import webdriver
+1. Please check the project interpreter configured. See below example to locate it on Pycharm
+
+##ISSUE
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 2-3: truncated \UXXXXXXXX escape
+https://stackoverflow.com/questions/37400974/unicode-error-unicodeescape-codec-cant-decode-bytes-in-position-2-3-trunca
+
+
+Step 6 : Adding selenium scripts to the project
+
+Step 7 : Run from IDE
+              Run from Command Line
+
+Some Useful TIPS
+
+=================================================
+
+About - https://www.youtube.com/channel/UCTt7...
+
+Playlists - https://www.youtube.com/channel/UCTt7...
